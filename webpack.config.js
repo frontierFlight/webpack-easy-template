@@ -6,8 +6,7 @@ const isProd = process.env.NODE_ENV === 'production';
 
 module.exports = {
     // entry: './src/index.js',
-    mode: process.env.NODE_ENV,
-    // mode: 'production',
+    mode: 'development',
     entry: {
         index: './src/index.js'
     },
@@ -15,6 +14,9 @@ module.exports = {
         filename: '[name].bundle.js',
         path: path.resolve(__dirname, 'dist'),
         clean: true
+    },
+    devServer: {
+        static: './dist',
     },
     module: {
         rules: [
@@ -56,6 +58,7 @@ module.exports = {
     plugins: [
         new HtmlWebpackPlugin({
             title: 'Webpack-Easy-Template',
+            template: 'index.html'
         }),
         new MiniCssExtractPlugin()
     ],
